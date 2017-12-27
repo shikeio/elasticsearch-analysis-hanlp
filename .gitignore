@@ -1,0 +1,12 @@
+# Gradle
+.gradle
+out
+build
+
+# IDEA IDE
+.idea
+*.iml
+
+# Vert.x
+.vertx
+logs

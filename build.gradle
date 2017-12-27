@@ -1,0 +1,55 @@
+buildscript {
+    ext {
+        elasticserachVersion = '6.0.0'
+    }
+
+    repositories {
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath "org.elasticsearch.gradle:build-tools:$elasticserachVersion"
+    }
+}
+
+group = 'io.shike'
+version = '6.0.0'
+
+repositories {
+    mavenLocal()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'elasticsearch.esplugin'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+licenseFile = rootProject.file('LICENSE.txt')
+noticeFile = rootProject.file('NOTICE.txt')
+
+esplugin {
+    // license of the plugin, may be different than the above license
+    licenseFile rootProject.file('LICENSE.txt')
+    // copyright notices, may be different than the above notice
+    noticeFile rootProject.file('NOTICE.txt')
+    name 'analysis-hanlp'
+    description 'HanLP Analyzer for Elasticserach'
+    classname 'org.elasticsearch.plugin.analysis.AnalysisHanLPPlugin'
+}
+
+dependencies {
+    compile "com.hankcs:hanlp:1.5.2"
+}
+
+bundlePlugin {
+    from('config/hanlp.properties') {
+        into('config')
+    }
+}
