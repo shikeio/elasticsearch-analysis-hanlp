@@ -48,6 +48,10 @@ dependencies {
     compile "com.hankcs:hanlp:1.5.2"
 }
 
+dependencyLicenses {
+    mapping from: /lucene-.*/, to: 'lucene'
+}
+
 bundlePlugin {
     from('config/hanlp.properties') {
         into('config')
