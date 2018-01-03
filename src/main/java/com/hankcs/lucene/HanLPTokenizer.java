@@ -5,13 +5,11 @@ import com.hankcs.hanlp.corpus.tag.Nature;
 import com.hankcs.hanlp.seg.Segment;
 import com.hankcs.hanlp.seg.common.Term;
 
-import org.apache.logging.log4j.Logger;
 import org.apache.lucene.analysis.Tokenizer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
 import org.apache.lucene.analysis.tokenattributes.PositionIncrementAttribute;
 import org.apache.lucene.analysis.tokenattributes.TypeAttribute;
-import org.elasticsearch.common.logging.ESLoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,8 +19,6 @@ import java.util.Set;
  * Tokenizer，抄袭ansj的
  */
 public class HanLPTokenizer extends Tokenizer {
-
-    private static final Logger logger = ESLoggerFactory.getLogger(HanLPTokenizer.class.getName());
 
     // 当前词
     private final CharTermAttribute termAtt = addAttribute(CharTermAttribute.class);
@@ -97,7 +93,6 @@ public class HanLPTokenizer extends Tokenizer {
     public void reset() throws IOException {
         super.reset();
         totalOffset += segment.offset;
-        logger.info(totalOffset);
         segment.reset(new BufferedReader(this.input));
     }
 

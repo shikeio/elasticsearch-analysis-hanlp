@@ -13,8 +13,6 @@ package com.hankcs.lucene;
 import com.hankcs.hanlp.seg.Segment;
 import com.hankcs.hanlp.seg.common.Term;
 
-import org.elasticsearch.common.logging.ESLoggerFactory;
-
 import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
@@ -98,7 +96,6 @@ public class SegmentWrapper {
         }
 
         List<Term> termList = segment.seg(line);
-        ESLoggerFactory.getLogger(SegmentWrapper.class).info("This line is" + line);
         if (termList.size() == 0) {
             return null;
         }
@@ -107,7 +104,7 @@ public class SegmentWrapper {
             term.offset += offset;
         }
         index = 0;
-        offset += line.length() + 1;
+        offset += line.length();
 
         return termArray[index++];
     }
