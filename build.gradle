@@ -1,6 +1,7 @@
 buildscript {
     ext {
         elasticserachVersion = '6.0.0'
+        hanlpVersion = '1.5.3'
     }
 
     repositories {
@@ -45,7 +46,7 @@ esplugin {
 }
 
 dependencies {
-    compile "com.hankcs:hanlp:1.5.2"
+    compile "com.hankcs:hanlp:$hanlpVersion"
 }
 
 dependencyLicenses {
