@@ -1,6 +1,9 @@
 > Important
 
-Thanks the great project [**HanLP**](https://github.com/hankcs/HanLP)
+Thanks the great projects:
+1. [**lucene**](https://github.com/apache/lucene-solr)
+2. [**elasticsearch**](https://github.com/elastic/elasticsearch)
+3. [**HanLP**](https://github.com/hankcs/HanLP)
 
 # Install lib
  ```bash
