@@ -1,6 +1,0 @@
-initscript{
-    exec {
-        workingDir 'libs'
-        commandLine 'mvn install:install-file -Dfile=hanlp-1.5.3.jar -DgroupId=com.hankcs -DartifactId=hanlp -Dversion=1.5.3 -Dpackaging=jar'
-    }
-}

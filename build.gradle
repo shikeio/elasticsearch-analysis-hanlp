@@ -58,3 +58,12 @@ bundlePlugin {
         into('config')
     }
 }
+
+task mvn(type: Exec) {
+    workingDir 'libs'
+    commandLine 'mvn', 'install:install-file', '-Dfile=hanlp-$hanlpVersion.jar', '-DgroupId=com.hankcs', '-DartifactId=hanlp','-Dversion=1.5.3', '-Dpackaging=jar'
+    doLast {
+        println('Installed hanlp')
+    }
+}
+build.dependsOn mvn
