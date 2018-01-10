@@ -20,3 +20,57 @@ gradle mvn
 # Notice
 
 Package `com.hankcs.lucene` copy from [hanlp-lucene-plugin](https://github.com/hankcs/hanlp-lucene-plugin)
+
+# Index and Highlight
+
+## Mapping
+
+
+`PUT test/_mapping/test`
+```json
+{
+  "properties": {
+    "content": {
+      "type": "text",
+      "analyzer": "hanlp-index",
+      "search_analyzer": "hanlp-index",
+      "index_options": "offsets"
+    }
+  }
+}
+```
+
+## Index Document
+
+PUT /test/test/1
+```json
+{
+  "content": ["中华人民共和国","地大物博"]
+}
+```
+
+## Highlight
+
+POST /test/test/_search
+```json
+{
+  "query": {
+    "match": {
+      "content": "中华"
+    }
+  },
+  "highlight": {
+    "pre_tags": [
+      "<tag1>"
+    ],
+    "post_tags": [
+      "</tag1>"
+    ],
+    "fields": {
+      "content": {}
+    }
+  }
+}
+```
+
+
