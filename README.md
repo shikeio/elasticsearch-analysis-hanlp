@@ -35,7 +35,7 @@ Support two kind analyzer:
 
 ## Test Analyzer
 
-`GET /_analyze
+`GET /_analyze`
 ```json
 {
   "analyzer" : "hanlp-index",
@@ -167,6 +167,43 @@ POST /test/test/_search
     "fields": {
       "content": {}
     }
+  }
+}
+```
+
+Response is:
+```json
+{
+  "took": 384,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": 1,
+    "max_score": 0.2876821,
+    "hits": [
+      {
+        "_index": "test",
+        "_type": "test",
+        "_id": "1",
+        "_score": 0.2876821,
+        "_source": {
+          "content": [
+            "中华人民共和国",
+            "地大物博"
+          ]
+        },
+        "highlight": {
+          "content": [
+            "中华<tag1>人民</tag1>共和国"
+          ]
+        }
+      }
+    ]
   }
 }
 ```
