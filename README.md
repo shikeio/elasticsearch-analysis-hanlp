@@ -199,7 +199,7 @@ Response is:
         },
         "highlight": {
           "content": [
-            "中华<tag1>人民</tag1>共和国"
+            "<tag1>中华</tag1>人民共和国"
           ]
         }
       }
