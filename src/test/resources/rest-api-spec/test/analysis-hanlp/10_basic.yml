@@ -1,0 +1,21 @@
+"Tokenizer":
+    - do:
+        indices.analyze:
+          body:
+            text:         我购买了道具和服装。
+            tokenizer:    hanlp
+    - length: { tokens: 3 }
+    - match:  { tokens.0.token: 购买 }
+    - match:  { tokens.1.token: 道具 }
+    - match:  { tokens.2.token: 服装 }
+---
+"Analyzer":
+    - do:
+        indices.analyze:
+          body:
+            text:         我购买了道具和服装。
+            analyzer:     hanlp-index
+    - length: { tokens: 3 }
+    - match:  { tokens.0.token: 购买 }
+    - match:  { tokens.1.token: 道具 }
+    - match:  { tokens.2.token: 服装 }
