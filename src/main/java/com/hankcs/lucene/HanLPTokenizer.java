@@ -1,5 +1,6 @@
 package com.hankcs.lucene;
 
+
 import com.hankcs.hanlp.collection.trie.bintrie.BinTrie;
 import com.hankcs.hanlp.corpus.tag.Nature;
 import com.hankcs.hanlp.seg.Segment;
@@ -17,6 +18,7 @@ import java.util.Set;
 
 /**
  * Tokenizer，抄袭ansj的
+ * see https://github.com/hankcs/hanlp-lucene-plugin
  */
 public class HanLPTokenizer extends Tokenizer {
 
@@ -33,6 +35,9 @@ public class HanLPTokenizer extends Tokenizer {
     private BinTrie<String> filter;
     private boolean enablePorterStemming;
 
+    /**
+     * 单文档当前所在的总offset，当reset（切换multi-value fields中的value）的时候不清零，在end（切换field）时清零
+     */
     private int totalOffset = 0;
 
     /**
@@ -44,7 +49,7 @@ public class HanLPTokenizer extends Tokenizer {
         super();
         this.segment = new SegmentWrapper(input, segment);
         if (filter != null && filter.size() > 0) {
-            this.filter = new BinTrie<>();
+            this.filter = new BinTrie<String>();
             for (String stopWord : filter) {
                 this.filter.put(stopWord, null);
             }
@@ -67,7 +72,9 @@ public class HanLPTokenizer extends Tokenizer {
                 term.word = stemmer.stem(term.word);
             }
 
-            if (filter == null || !filter.containsKey(term.word)) {
+            if (filter != null && filter.containsKey(term.word)) {
+                continue;
+            } else {
                 ++position;
                 un_increased = false;
             }
@@ -76,14 +83,22 @@ public class HanLPTokenizer extends Tokenizer {
 
         if (term != null) {
             positionAttr.setPositionIncrement(position);
-            termAtt.append(term.word);
-            termAtt.setLength(term.word.length());
-            offsetAtt.setOffset(totalOffset + term.offset, totalOffset + term.offset + term.word.length());
+            termAtt.setEmpty().append(term.word);
+            offsetAtt.setOffset(correctOffset(totalOffset + term.offset),
+                                correctOffset(totalOffset + term.offset + term.word.length()));
             typeAtt.setType(term.nature == null ? "null" : term.nature.toString());
             return true;
         } else {
+            totalOffset += segment.offset;
             return false;
         }
+    }
+
+    @Override
+    public void end() throws IOException {
+        super.end();
+        offsetAtt.setOffset(totalOffset, totalOffset);
+        totalOffset = 0;
     }
 
     /**
@@ -92,12 +107,7 @@ public class HanLPTokenizer extends Tokenizer {
     @Override
     public void reset() throws IOException {
         super.reset();
-        totalOffset += segment.offset;
         segment.reset(new BufferedReader(this.input));
     }
 
-    @Override
-    public void end() throws IOException {
-        super.end();
-    }
 }
