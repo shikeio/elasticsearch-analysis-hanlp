@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        elasticserachVersion = '6.1.1'
+        elasticserachVersion = '6.1.2'
         hanlpVersion = '1.5.3'
     }
 
@@ -16,7 +16,7 @@ buildscript {
 }
 
 group = 'io.shike'
-version = '6.1.1'
+version = '6.1.2'
 
 repositories {
     mavenLocal()
