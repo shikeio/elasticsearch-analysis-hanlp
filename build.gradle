@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        elasticserachVersion = '6.1.2'
+        elasticserachVersion = '6.1.3'
         hanlpVersion = '1.5.3'
     }
 
@@ -16,7 +16,7 @@ buildscript {
 }
 
 group = 'io.shike'
-version = '6.1.2'
+version = '6.1.3'
 
 repositories {
     mavenLocal()
@@ -42,6 +42,7 @@ esplugin {
     name 'analysis-hanlp'
     description 'HanLP Analyzer for Elasticserach'
     classname 'org.elasticsearch.plugin.analysis.AnalysisHanLPPlugin'
+    version = project.version
 }
 
 dependencies {
