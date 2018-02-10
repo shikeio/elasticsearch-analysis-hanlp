@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        elasticserachVersion = '6.2.0'
+        elasticserachVersion = '6.2.1'
         hanlpVersion = '1.5.3'
     }
 
@@ -16,7 +16,7 @@ buildscript {
 }
 
 group = 'io.shike'
-version = '6.2.0'
+version = '6.2.1'
 
 repositories {
     mavenLocal()
@@ -26,11 +26,10 @@ repositories {
 
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'elasticsearch.esplugin'
 
 sourceCompatibility = JavaVersion.VERSION_1_9
 targetCompatibility = JavaVersion.VERSION_1_8
-
-apply plugin: 'elasticsearch.esplugin'
 
 licenseFile = rootProject.file('LICENSE.txt')
 noticeFile = rootProject.file('NOTICE.txt')
