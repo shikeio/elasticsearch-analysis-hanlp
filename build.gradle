@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        elasticserachVersion = '6.2.1'
+        elasticserachVersion = '6.2.2'
         hanlpVersion = '1.5.3'
     }
 
