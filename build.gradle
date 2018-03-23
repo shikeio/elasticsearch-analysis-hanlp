@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        elasticserachVersion = '6.2.2'
+        elasticserachVersion = '6.1.4'
         hanlpVersion = '1.5.3'
     }
 
@@ -16,7 +16,7 @@ buildscript {
 }
 
 group = 'io.shike'
-version = '6.2.2'
+version = '6.1.4'
 
 repositories {
     mavenLocal()
@@ -36,12 +36,12 @@ noticeFile = rootProject.file('NOTICE.txt')
 
 esplugin {
     // license of the plugin, may be different than the above license
-    licenseFile rootProject.file('LICENSE.txt')
+    licenseFile = rootProject.file('LICENSE.txt')
     // copyright notices, may be different than the above notice
-    noticeFile rootProject.file('NOTICE.txt')
-    name 'analysis-hanlp'
-    description 'HanLP Analyzer for Elasticserach'
-    classname 'org.elasticsearch.plugin.analysis.AnalysisHanLPPlugin'
+    noticeFile = rootProject.file('NOTICE.txt')
+    name = 'analysis-hanlp'
+    description = 'HanLP Analyzer for Elasticserach'
+    classname = 'org.elasticsearch.plugin.analysis.AnalysisHanLPPlugin'
     version = project.version
 }
 
