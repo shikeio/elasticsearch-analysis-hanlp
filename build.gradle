@@ -1,11 +1,12 @@
 buildscript {
     ext {
-        elasticserachVersion = '6.2.3'
-        hanlpVersion = '1.5.3'
+        elasticserachVersion = '6.2.4'
+        hanlpVersion = '1.6.4'
     }
 
     repositories {
         mavenLocal()
+        maven { url = 'http://maven.aliyun.com/nexus/content/groups/public/' }
         mavenCentral()
         jcenter()
     }
@@ -16,7 +17,7 @@ buildscript {
 }
 
 group = 'io.shike'
-version = '6.2.3'
+version = '6.2.4'
 
 repositories {
     mavenLocal()
@@ -61,7 +62,7 @@ bundlePlugin {
 
 task mvn(type: Exec) {
     workingDir 'libs'
-    commandLine 'mvn', 'install:install-file', '-Dfile=hanlp-$hanlpVersion.jar', '-DgroupId=com.hankcs', '-DartifactId=hanlp','-Dversion=1.5.3', '-Dpackaging=jar'
+    commandLine 'mvn', 'install:install-file', '-Dfile=hanlp-1.6.4.jar', '-DgroupId=com.hankcs', '-DartifactId=hanlp','-Dversion=1.6.4', '-Dpackaging=jar'
     doLast {
         println('Installed hanlp')
     }
