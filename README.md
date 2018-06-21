@@ -7,6 +7,13 @@ Thanks the great projects:
 
 > Package `com.hankcs.lucene` copy from [hanlp-lucene-plugin](https://github.com/hankcs/hanlp-lucene-plugin)
 
+
+# Issue
+
+Can't use custom dictionary in JDK9. So change `targetCompatibility` to 1.8.
+
+All published releases had build on JDK9.
+
 # Build and Install
 
 ## Install lib
