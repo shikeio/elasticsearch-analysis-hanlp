@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        elasticserachVersion = '6.3.0'
+        elasticserachVersion = '6.3.1'
         hanlpVersion = '1.6.4'
     }
 
@@ -17,10 +17,11 @@ buildscript {
 }
 
 group = 'io.shike'
-version = '6.3.0'
+version = '6.3.1'
 
 repositories {
     mavenLocal()
+    maven { url = 'http://maven.aliyun.com/nexus/content/groups/public/' }
     mavenCentral()
     jcenter()
 }
