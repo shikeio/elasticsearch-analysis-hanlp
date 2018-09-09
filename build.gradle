@@ -1,7 +1,7 @@
 buildscript {
     ext {
-        elasticserachVersion = '6.3.1'
-        hanlpVersion = '1.6.4'
+        elasticserachVersion = '6.3.2'
+        hanlpVersion = '1.6.8'
     }
 
     repositories {
@@ -17,7 +17,7 @@ buildscript {
 }
 
 group = 'io.shike'
-version = '6.3.1'
+version = '6.3.2'
 
 repositories {
     mavenLocal()
@@ -62,7 +62,7 @@ bundlePlugin {
 
 task mvn(type: Exec) {
     workingDir 'libs'
-    commandLine 'mvn', 'install:install-file', '-Dfile=hanlp-1.6.4.jar', '-DgroupId=com.hankcs', '-DartifactId=hanlp','-Dversion=1.6.4', '-Dpackaging=jar'
+    commandLine 'mvn', 'install:install-file', '-Dfile=hanlp-1.6.8.jar', '-DgroupId=com.hankcs', '-DartifactId=hanlp','-Dversion=1.6.8', '-Dpackaging=jar'
     doLast {
         println('Installed hanlp')
     }
