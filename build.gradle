@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        elasticserachVersion = '6.4.1'
+        elasticserachVersion = '6.4.2'
         hanlpVersion = '1.6.8'
     }
 
@@ -17,10 +17,9 @@ buildscript {
 }
 
 group = 'io.shike'
-version = '6.4.1'
+version = '6.4.2'
 
 repositories {
-    maven { url = 'http://192.168.0.4:8081/repository/maven-public/' }
     mavenCentral()
     jcenter()
 }
