@@ -16,6 +16,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class HanLPTokenizerFactory extends TokenizerFactory {
+
     private boolean enableIndexMode;
     private boolean enablePorterStemming;
     private boolean enableNumberQuantifierRecognize;

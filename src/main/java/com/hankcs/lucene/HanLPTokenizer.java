@@ -58,7 +58,7 @@ public class HanLPTokenizer extends Tokenizer {
     }
 
     @Override
-    final public boolean incrementToken() throws IOException {
+    public boolean incrementToken() throws IOException {
         clearAttributes();
         int position = 0;
         Term term;

@@ -2,7 +2,6 @@ package org.elasticsearch.plugin.analysis;
 
 import com.hankcs.hanlp.HanLP;
 import com.hankcs.hanlp.corpus.io.IOUtil;
-import com.hankcs.hanlp.utility.Predefine;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.elasticsearch.index.analysis.AnalyzerProvider;
@@ -25,8 +24,9 @@ public class AnalysisHanLPPlugin extends Plugin implements AnalysisPlugin {
     public static Set<String> defaultStopWordDictionary = new HashSet<>();
 
     static {
-        Predefine.HANLP_PROPERTIES_PATH = System.getProperties().get("user.dir") + "/config/analysis-hanlp/hanlp.properties";
-        HanLP.Config.enableDebug(false);
+//        Use HANLP_ROOT instead
+//        Predefine.HANLP_PROPERTIES_PATH = System.getProperties().get("user.dir") + "/config/analysis-hanlp/hanlp.properties";
+//        HanLP.Config.enableDebug(false);
         defaultStopWordDictionary.addAll(IOUtil.readLineListWithLessMemory(HanLP.Config.CoreStopWordDictionaryPath));
     }
 

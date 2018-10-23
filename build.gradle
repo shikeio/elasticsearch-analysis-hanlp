@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        elasticserachVersion = '6.4.0'
+        elasticserachVersion = '6.4.1'
         hanlpVersion = '1.6.8'
     }
 
@@ -17,11 +17,10 @@ buildscript {
 }
 
 group = 'io.shike'
-version = '6.4.0'
+version = '6.4.1'
 
 repositories {
-    mavenLocal()
-    maven { url = 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url = 'http://192.168.0.4:8081/repository/maven-public/' }
     mavenCentral()
     jcenter()
 }
@@ -47,11 +46,11 @@ esplugin {
 }
 
 dependencies {
-    compile "com.hankcs:hanlp:$hanlpVersion"
+    compile files("libs/hanlp-1.6.8.jar")
 }
 
 dependencyLicenses {
-    mapping from: /lucene-.*/, to: 'lucene'
+    mapping from: 'licenses/lucene-.*/', to: 'lucene'
 }
 
 bundlePlugin {
@@ -59,12 +58,3 @@ bundlePlugin {
         into('config')
     }
 }
-
-task mvn(type: Exec) {
-    workingDir 'libs'
-    commandLine 'mvn', 'install:install-file', '-Dfile=hanlp-1.6.8.jar', '-DgroupId=com.hankcs', '-DartifactId=hanlp','-Dversion=1.6.8', '-Dpackaging=jar'
-    doLast {
-        println('Installed hanlp')
-    }
-}
-build.dependsOn mvn
